@@ -10,19 +10,35 @@ import SwiftUI
 struct BoardView: View {
     private let columnsCount = 5
     private let rowsCount = 10
+    
+    /// snakes & ladders: head → tail, bottom → top
+    let getMovingCells: [Int : [Int]] = [ // trilok
+        3:[3,7,15],
+        17:[17,23,29,31],
+        20: [20,22,28,34, 36],
+        33: [33,38,43],
+        40:[40,42,48],
+        
+        16: [16,14,8,2],
+        19: [19, 10],
+        32:[32,28,24],
+        45:[45,37,33, 29,21],
+        47: [47,43,39]
+    ]
+    
     private var columns: [GridItem] {
         Array(repeating: GridItem(.flexible(), spacing: 4), count: columnsCount)
     }
     
-    @State private var currentPosition: Int = 0      // 0 = off-board
+    @State private var currentPosition: Int = 0
     @State private var diceValue: Int = 1
     @State private var diceRolling: Bool = false
     @State private var isMovingToken: Bool = false
     @State private var showAnimation: Bool = false
-    // prevent tapping while moving
+   
     
     /// Numbers laid out like a snakes & ladders board
-    private var boardNumbers: [Int] {
+    var boardNumbers: [Int] {
         var result: [Int] = []
         for row in (0..<rowsCount).reversed() {          // draw from top row to bottom
             let start = row * columnsCount + 1           // first number in this row
@@ -37,12 +53,164 @@ struct BoardView: View {
     }
     
     var body: some View {
+        ZStack {
+            if currentPosition == 50 {
+                VStack {
+                    GIFImage(name: "celebrate1")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    Text("You won buddy!!")
+                        .font(.largeTitle)
+                    
+                    Button("Start New Game", action: {
+                        currentPosition = 0
+                    })
+                    
+                    Spacer()
+                    
+                }
+            } else {
+                mainView
+                    .padding()
+                
+                Group {
+                    ladder40_48
+                    ladder33_43
+                    ladder20_36
+                    ladder17_31
+                    ladder3_15
+                }
+                
+                
+                Group {
+                    snake47_39
+                    snake45_21
+                    snake32_24
+                    snake19_10
+                    snake16_2
+                }.opacity(0.7)
+            }
+
+            
+
+        }
+       
+        
+    }
+    
+    var snake47_39: some View {
+        Group {
+            Image("snake")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 90, height: 170)
+                .rotationEffect(Angle(degrees: 16.0))
+                .offset(x: 0, y: -249)
+        }
+    }
+    var snake45_21: some View {
+        Group {
+            Image("snake")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 90, height: 334)
+                .rotationEffect(Angle(degrees: 16.0))
+                .offset(x: 20, y: -136)
+        }
+    }
+    
+    var snake32_24: some View {
+        Group {
+            Image("snake")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 90, height: 160)
+                .rotationEffect(Angle(degrees: -92.0))
+                .offset(x: 0, y: -88)
+        }
+    }
+    
+    var snake19_10: some View {
+        Group {
+            Image("snake")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 90, height: 150)
+               // .rotationEffect(Angle(degrees: 0))
+                .offset(x: -104, y: 84)
+        }
+    }
+    
+    
+    var snake16_2: some View {
+        Group {
+            Image("snake")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 90, height: 240)
+                .rotationEffect(Angle(degrees: 14.5))
+                .offset(x: 54, y: 114)
+        }
+    }
+    
+    
+    var ladder33_43: some View {
+        Group {
+            Image("ladder2").resizable()
+                .frame(width: 280, height: 114)
+                .scaledToFill()
+                .offset(x: -5, y: -190)
+        }
+    }
+    
+    var ladder17_31: some View {
+        Group {
+            Image("ladder2").resizable()
+                .frame(width: 200, height: 276)
+                .scaledToFill()
+                .rotationEffect(Angle(degrees: -54.0))
+                .offset(x: -38, y: -50)
+                //
+        }
+    }
+    
+    var ladder40_48: some View {
+        Group {
+            Image("ladder3").resizable()
+                .frame(width: 160, height: 180)
+                .scaledToFill()
+                .rotationEffect(Angle(degrees: 31.5))
+                .offset(x: -79, y: -240)
+        }
+    }
+    
+    var ladder20_36: some View {
+        Group {
+            Image("ladder2").resizable()
+                .frame(width: 160, height: 370)
+                .scaledToFill()
+                .rotationEffect(Angle(degrees: 52.5))
+                .offset(x: -0, y: -85)
+  
+        }
+    }
+    
+    var ladder3_15: some View {
+        Group {
+            Image("ladder3")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 60, height: 160)
+                .rotationEffect(Angle(degrees: 28.5))
+                .offset(x: 70, y: 152)
+        }
+    }
+    var mainView: some View {
         VStack(spacing: 20) {
             Spacer()
             // Grid
             LazyVGrid(columns: columns, spacing: 4) {
                 ForEach(boardNumbers, id: \.self) { number in
-
+                    
                     self.cellView(number: number,
                                   isCurrent: number == currentPosition,
                                   isRolling: self.diceRolling)
@@ -71,26 +239,38 @@ struct BoardView: View {
                 })
             }
         }
-        .padding()
     }
-    
     // MARK: - Dice View & Movement
     
     var diceView: some View {
         ZStack {
-            Image("dice\(diceValue)")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 58, height: 58)
-                .opacity(diceRolling ? 0 : 1.0)
-                .onTapGesture {
-                    rollDice()
+            if currentPosition == 0 {
+                if diceRolling {
+                    GIFImage(name: "dice3d")
+                        .frame(width: 84, height: 84)
+                } else {
+                    Button("START", action: {
+                        rollDice()
+                    })
                 }
-            
-            if diceRolling {
-                GIFImage(name: "dice3d")
-                    .frame(width: 84, height: 84)
+            } else {
+                if diceRolling {
+                    GIFImage(name: "dice3d")
+                        .frame(width: 84, height: 84)
+                } else {
+                    Image("dice\(diceValue)")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 58, height: 58)
+                        .opacity(diceRolling ? 0 : 1.0)
+                        .onTapGesture {
+                            rollDice()
+                        }
+                }
             }
+
+            
+
         }
         .frame(width: 68, height: 68)
     }
@@ -108,10 +288,10 @@ struct BoardView: View {
             Text("\(number)")
                 .font(.caption)
                 .fontWeight(isCurrent ? .bold : .regular)
-                .foregroundColor(isCurrent ? .black : .black)
+                .foregroundColor(isCurrent ? .yellow : .white)
             
             GIFImage(name: "walking")
-                .frame(width: 72, height: 72)
+                .frame(width: 42, height: 42)
                 .opacity(isCurrent ? 1.0 : 0)
 
 //            if self.showAnimation {
@@ -125,7 +305,7 @@ struct BoardView: View {
 //                    .frame(width: 46, height: 46)
 //                    .opacity(isCurrent ? 1.0 : 0)
          //   }
-        }.frame(height: 86)
+        }.frame(height: 52)
     }
 
     
@@ -144,6 +324,9 @@ struct BoardView: View {
     }
     
     private func startMovingToken() {
+        guard currentPosition + diceValue <= 50 else {
+            return
+        }
         let target = min(50, currentPosition + diceValue)
         let steps = target - currentPosition
         guard steps > 0 else { return }
@@ -160,6 +343,7 @@ struct BoardView: View {
     private func moveStep(remainingSteps: Int) {
         guard remainingSteps > 0 else {
             isMovingToken = false
+            handleSnakeOrLadder()
             return
         }
         
@@ -172,6 +356,126 @@ struct BoardView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             moveStep(remainingSteps: remainingSteps - 1)
         }
+    }
+    
+    /// Called when the player has finished moving for this roll
+    private func handleSnakeOrLadder() {
+        
+        guard let destinationPath = getMovingCells[currentPosition] else {
+            print("NOT handleSnakeOrLadder --->>>")
+            return
+        }
+        print("handleSnakeOrLadder --->>>  \(destinationPath)")
+        
+        guard destinationPath.count > 1 else {
+            currentPosition = destinationPath.last ?? 0
+            return
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+1.4, execute: {
+            isMovingToken = true
+            moveAlongPath(destinationPath, index: 1)       // index 0 is the current square
+        })
+        
+    }
+    
+    /// Move step-by-step along a predefined path (used for snake / ladder)
+    private func moveAlongPath(_ path: [Int], index: Int) {
+        guard index < path.count else {
+            isMovingToken = false
+            return
+        }
+        
+        withAnimation(.easeInOut(duration: 0.2)) {
+            currentPosition = path[index]
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
+            moveAlongPath(path, index: index + 1)
+        }
+    }
+    
+    private func pathForJump1(from start: Int, to end: Int) -> [Int] {
+        guard let startIndex = boardNumbers.firstIndex(of: start),
+              let endIndex   = boardNumbers.firstIndex(of: end) else {
+            return [start, end]
+        }
+        
+        let startRow = startIndex / columnsCount
+        let startCol = startIndex % columnsCount
+        let endRow   = endIndex   / columnsCount
+        let endCol   = endIndex   % columnsCount
+        
+        func numberAt(row: Int, col: Int) -> Int? {
+            let idx = row * columnsCount + col
+            guard boardNumbers.indices.contains(idx) else { return nil }
+            return boardNumbers[idx]
+        }
+        
+        var path: [Int] = [start]
+        var row = startRow
+        var col = startCol
+        
+        let deltaRow = endRow - startRow
+        let deltaCol = endCol - startCol
+        
+        if abs(deltaRow) == abs(deltaCol) {
+            // 🔹 DIAGONAL (like 14 → 2): move row and column together
+            let steps   = abs(deltaRow)
+            let stepRow = deltaRow > 0 ? 1 : -1
+            let stepCol = deltaCol > 0 ? 1 : -1
+            
+            for _ in 0..<steps {
+                row += stepRow
+                col += stepCol
+                if let n = numberAt(row: row, col: col) {
+                    path.append(n)
+                }
+            }
+            
+        } else if deltaCol == 0 {
+            // 🔹 PURE VERTICAL (like 19 → 32)
+            let stepRow = deltaRow > 0 ? 1 : -1
+            while row != endRow {
+                row += stepRow
+                if let n = numberAt(row: row, col: col) {
+                    path.append(n)
+                }
+            }
+            
+        } else if deltaRow == 0 {
+            // 🔹 PURE HORIZONTAL (if you ever need it)
+            let stepCol = deltaCol > 0 ? 1 : -1
+            while col != endCol {
+                col += stepCol
+                if let n = numberAt(row: row, col: col) {
+                    path.append(n)
+                }
+            }
+            
+        } else {
+            // fallback: vertical then horizontal
+            let stepRow = deltaRow > 0 ? 1 : -1
+            while row != endRow {
+                row += stepRow
+                if let n = numberAt(row: row, col: col) {
+                    path.append(n)
+                }
+            }
+            let stepCol = deltaCol > 0 ? 1 : -1
+            while col != endCol {
+                col += stepCol
+                if let n = numberAt(row: row, col: col) {
+                    path.append(n)
+                }
+            }
+        }
+        
+        if path.last != end {
+            path.append(end)
+        }
+        
+        return path
     }
 }
 
