@@ -11,7 +11,31 @@ import SwiftUI
 struct Dice3DApp: App {
     var body: some Scene {
         WindowGroup {
-            BoardView()
+            RootView()
+        }
+    }
+}
+
+struct RootView: View {
+    @State private var showLaunchScreen = true
+
+    var body: some View {
+        ZStack {
+            if showLaunchScreen {
+                LaunchScreenView()
+                    .transition(.opacity)
+            } else {
+                BoardView()
+                    .transition(.opacity)
+            }
+        }
+        .onAppear {
+            // Hide launch screen after 5 seconds
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    showLaunchScreen = false
+                }
+            }
         }
     }
 }
