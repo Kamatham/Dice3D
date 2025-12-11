@@ -8,19 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		2D2F153B2EE2E2D8005D33EE /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2D2F153A2EE2E2D8005D33EE /* SDWebImageSwiftUI */; };
+		2D98F36E2EEAA45000C60A05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F3642EEAA45000C60A05 /* Assets.xcassets */; };
+		2D98F36F2EEAA45000C60A05 /* celebrate.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F3662EEAA45000C60A05 /* celebrate.gif */; };
+		2D98F3702EEAA45000C60A05 /* celebrate1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F3672EEAA45000C60A05 /* celebrate1.gif */; };
+		2D98F3712EEAA45000C60A05 /* dice3d.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F3682EEAA45000C60A05 /* dice3d.gif */; };
+		2D98F3722EEAA45000C60A05 /* walking.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F36C2EEAA45000C60A05 /* walking.gif */; };
+		2D98F3732EEAA45000C60A05 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F3652EEAA45000C60A05 /* BoardView.swift */; };
+		2D98F3742EEAA45000C60A05 /* Dice3DApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F3692EEAA45000C60A05 /* Dice3DApp.swift */; };
+		2D98F3752EEAA45000C60A05 /* GIFImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F36A2EEAA45000C60A05 /* GIFImage.swift */; };
+		2D98F3762EEAA45000C60A05 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F36B2EEAA45000C60A05 /* SoundManager.swift */; };
+		2D98F37D2EEAA65F00C60A05 /* run_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F37B2EEAA65F00C60A05 /* run_sound.mp3 */; };
+		2D98F37E2EEAA65F00C60A05 /* snake_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F37C2EEAA65F00C60A05 /* snake_sound.mp3 */; };
+		2D98F37F2EEAA65F00C60A05 /* ladder_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F37A2EEAA65F00C60A05 /* ladder_sound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2D2F152B2EE2DADC005D33EE /* Dice3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dice3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D98F3642EEAA45000C60A05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2D98F3652EEAA45000C60A05 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		2D98F3662EEAA45000C60A05 /* celebrate.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = celebrate.gif; sourceTree = "<group>"; };
+		2D98F3672EEAA45000C60A05 /* celebrate1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = celebrate1.gif; sourceTree = "<group>"; };
+		2D98F3682EEAA45000C60A05 /* dice3d.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dice3d.gif; sourceTree = "<group>"; };
+		2D98F3692EEAA45000C60A05 /* Dice3DApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice3DApp.swift; sourceTree = "<group>"; };
+		2D98F36A2EEAA45000C60A05 /* GIFImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImage.swift; sourceTree = "<group>"; };
+		2D98F36B2EEAA45000C60A05 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		2D98F36C2EEAA45000C60A05 /* walking.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = walking.gif; sourceTree = "<group>"; };
+		2D98F37A2EEAA65F00C60A05 /* ladder_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ladder_sound.mp3; sourceTree = "<group>"; };
+		2D98F37B2EEAA65F00C60A05 /* run_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = run_sound.mp3; sourceTree = "<group>"; };
+		2D98F37C2EEAA65F00C60A05 /* snake_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = snake_sound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		11909D882EEAD99500882A0F /* Dice3D */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Dice3D;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2D2F15282EE2DADC005D33EE /* Frameworks */ = {
@@ -37,7 +53,7 @@
 		2D2F15222EE2DADC005D33EE = {
 			isa = PBXGroup;
 			children = (
-				11909D882EEAD99500882A0F /* Dice3D */,
+				2D98F36D2EEAA45000C60A05 /* Dice3D */,
 				2D2F152C2EE2DADC005D33EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,6 +64,49 @@
 				2D2F152B2EE2DADC005D33EE /* Dice3D.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2D98F36D2EEAA45000C60A05 /* Dice3D */ = {
+			isa = PBXGroup;
+			children = (
+				2D98F3772EEAA45600C60A05 /* support */,
+				2D98F3642EEAA45000C60A05 /* Assets.xcassets */,
+				2D98F3652EEAA45000C60A05 /* BoardView.swift */,
+				2D98F3692EEAA45000C60A05 /* Dice3DApp.swift */,
+				2D98F36A2EEAA45000C60A05 /* GIFImage.swift */,
+				2D98F36B2EEAA45000C60A05 /* SoundManager.swift */,
+			);
+			path = Dice3D;
+			sourceTree = "<group>";
+		};
+		2D98F3772EEAA45600C60A05 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				2D98F3792EEAA64600C60A05 /* sounds */,
+				2D98F3782EEAA63C00C60A05 /* images */,
+			);
+			path = support;
+			sourceTree = "<group>";
+		};
+		2D98F3782EEAA63C00C60A05 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				2D98F3662EEAA45000C60A05 /* celebrate.gif */,
+				2D98F3672EEAA45000C60A05 /* celebrate1.gif */,
+				2D98F3682EEAA45000C60A05 /* dice3d.gif */,
+				2D98F36C2EEAA45000C60A05 /* walking.gif */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		2D98F3792EEAA64600C60A05 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				2D98F37A2EEAA65F00C60A05 /* ladder_sound.mp3 */,
+				2D98F37B2EEAA65F00C60A05 /* run_sound.mp3 */,
+				2D98F37C2EEAA65F00C60A05 /* snake_sound.mp3 */,
+			);
+			path = sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -65,9 +124,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				11909D882EEAD99500882A0F /* Dice3D */,
 			);
 			name = Dice3D;
 			packageProductDependencies = (
@@ -119,6 +175,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D98F36E2EEAA45000C60A05 /* Assets.xcassets in Resources */,
+				2D98F37D2EEAA65F00C60A05 /* run_sound.mp3 in Resources */,
+				2D98F37E2EEAA65F00C60A05 /* snake_sound.mp3 in Resources */,
+				2D98F37F2EEAA65F00C60A05 /* ladder_sound.mp3 in Resources */,
+				2D98F36F2EEAA45000C60A05 /* celebrate.gif in Resources */,
+				2D98F3702EEAA45000C60A05 /* celebrate1.gif in Resources */,
+				2D98F3712EEAA45000C60A05 /* dice3d.gif in Resources */,
+				2D98F3722EEAA45000C60A05 /* walking.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +216,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D98F3732EEAA45000C60A05 /* BoardView.swift in Sources */,
+				2D98F3742EEAA45000C60A05 /* Dice3DApp.swift in Sources */,
+				2D98F3752EEAA45000C60A05 /* GIFImage.swift in Sources */,
+				2D98F3762EEAA45000C60A05 /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
