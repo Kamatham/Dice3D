@@ -11,6 +11,25 @@ struct BoardView: View {
     private let columnsCount = 5
     private let rowsCount = 10
     
+    @State private var currentPosition: Int = 0
+    @State private var diceValue: Int = 1
+    @State private var diceRolling: Bool = false
+    @State private var isMovingToken: Bool = false
+    @State private var showAnimation: Bool = false
+    
+    var isReversedAnimation: Bool {
+        if currentPosition < 6 ||
+            (currentPosition >= 10 && currentPosition < 16) ||
+            (currentPosition >= 21 && currentPosition < 26) ||
+            (currentPosition >= 31 && currentPosition < 36) ||
+            (currentPosition >= 41 && currentPosition < 46)
+        {
+            return false // forward walk
+        } else {
+            return true // reverse walk
+        }
+    }
+    
     /// Numbers laid out like a snakes & ladders board
     var boardNumbers: [Int] {
         var result: [Int] = []
@@ -31,11 +50,7 @@ struct BoardView: View {
         Array(repeating: GridItem(.flexible(), spacing: 4), count: columnsCount)
     }
     
-    @State private var currentPosition: Int = 0
-    @State private var diceValue: Int = 1
-    @State private var diceRolling: Bool = false
-    @State private var isMovingToken: Bool = false
-    @State private var showAnimation: Bool = false
+
    
         
     var body: some View {
@@ -68,7 +83,7 @@ struct BoardView: View {
                     ladder20_36
                     ladder17_31
                     ladder3_15
-                }
+                }.zIndex(-1)
                 
                 
                 Group {
@@ -77,7 +92,9 @@ struct BoardView: View {
                     snake32_24
                     snake19_10
                     snake16_2
-                }//.opacity(0.7)
+                }.zIndex(-1)
+               // .opacity(0.37)
+                    
             }
             
             
@@ -113,12 +130,13 @@ struct BoardView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 46, height: 46)
+                } else {
+                   // Spacer()
+                    Button("RESET", action: {
+                        self.diceValue = 1
+                        self.currentPosition = 0
+                    })
                 }
-                Spacer()
-                Button("RESET", action: {
-                    self.diceValue = 1
-                    self.currentPosition = 0
-                })
             }
         }
     }
@@ -130,6 +148,7 @@ struct BoardView: View {
                 if diceRolling {
                     GIFImage(name: "dice3d")
                         .frame(width: 84, height: 84)
+                        .scaleEffect(x: -1, y: 1)
                 } else {
                     Button("START", action: {
                         rollDice()
@@ -145,14 +164,12 @@ struct BoardView: View {
                         .scaledToFit()
                         .frame(width: 58, height: 58)
                         .opacity(diceRolling ? 0 : 1.0)
+                        .cornerRadius(8)
                         .onTapGesture {
                             rollDice()
                         }
                 }
             }
-
-            
-
         }
         .frame(width: 68, height: 68)
     }
@@ -172,10 +189,22 @@ struct BoardView: View {
                 .fontWeight(isCurrent ? .bold : .regular)
                 .foregroundColor(isCurrent ? .yellow : .primary)
             
-            GIFImage(name: "walking")
-                .frame(width: 42, height: 42)
-                .opacity(isCurrent ? 1.0 : 0)
-                .zIndex(1)
+            if showAnimation {
+                GIFImage(name: "walking")
+                    .frame(width: 48, height: 48)
+                    .opacity(isCurrent ? 1.0 : 0)
+                    .scaleEffect(x: isReversedAnimation ? -1 : 1, y: 1) // chaitu
+                    .zIndex(1)
+            } else {
+                Image("standing")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 22, height: 22)
+                    .opacity(isCurrent ? 1.0 : 0)
+                    .scaleEffect(x: isReversedAnimation ? -1 : 1, y: 1) // chaitu
+                    .zIndex(1)
+            }
+
             
         }.frame(height: 52)
     }
@@ -211,7 +240,7 @@ extension BoardView {
         
         diceValue = Int.random(in: 1...6)
         diceRolling = true
-        self.showAnimation = true
+        showAnimation = true
         // play GIF for a bit, then start moving token
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             diceRolling = false
@@ -228,17 +257,15 @@ extension BoardView {
         guard steps > 0 else { return }
         
         isMovingToken = true
-        
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.showAnimation = false
-        }
+        SoundManager.shared.playLadderSound(fileName: "run_sound")
         moveStep(remainingSteps: steps)
     }
     
     private func moveStep(remainingSteps: Int) {
         guard remainingSteps > 0 else {
             isMovingToken = false
+            showAnimation = false
+            SoundManager.shared.stopPlay()
             handleSnakeOrLadder()
             return
         }
@@ -249,7 +276,7 @@ extension BoardView {
         }
         
         // schedule next step
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
             moveStep(remainingSteps: remainingSteps - 1)
         }
     }
@@ -261,11 +288,22 @@ extension BoardView {
             print("NOT handleSnakeOrLadder --->>>")
             return
         }
+        SoundManager.shared.stopPlay()
         print("handleSnakeOrLadder --->>>  \(destinationPath)")
         
         guard destinationPath.count > 1 else {
             currentPosition = destinationPath.last ?? 0
             return
+        }
+        
+        // 🔊 Play ladder sound
+        if destinationPath.last! > currentPosition {
+            SoundManager.shared.playLadderSound(fileName: "ladder_sound")
+        }
+        
+        // 🔊 Play Snake sound
+        if destinationPath.last! < currentPosition {
+            SoundManager.shared.playLadderSound(fileName: "snake_sound")
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute: {
@@ -280,6 +318,8 @@ extension BoardView {
     private func moveAlongPath(_ path: [Int], index: Int) {
         guard index < path.count else {
             isMovingToken = false
+            showAnimation = false
+            SoundManager.shared.stopPlay()
             return
         }
         

