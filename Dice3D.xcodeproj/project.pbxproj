@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11909D992EEADD0A00882A0F /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11909D982EEADD0A00882A0F /* LaunchScreenView.swift */; };
 		2D2F153B2EE2E2D8005D33EE /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2D2F153A2EE2E2D8005D33EE /* SDWebImageSwiftUI */; };
 		2D98F36E2EEAA45000C60A05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F3642EEAA45000C60A05 /* Assets.xcassets */; };
 		2D98F36F2EEAA45000C60A05 /* celebrate.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F3662EEAA45000C60A05 /* celebrate.gif */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11909D982EEADD0A00882A0F /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		2D2F152B2EE2DADC005D33EE /* Dice3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dice3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D98F3642EEAA45000C60A05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D98F3652EEAA45000C60A05 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				2D98F3692EEAA45000C60A05 /* Dice3DApp.swift */,
 				2D98F36A2EEAA45000C60A05 /* GIFImage.swift */,
 				2D98F36B2EEAA45000C60A05 /* SoundManager.swift */,
+				11909D982EEADD0A00882A0F /* LaunchScreenView.swift */,
 			);
 			path = Dice3D;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11909D992EEADD0A00882A0F /* LaunchScreenView.swift in Sources */,
 				2D98F3732EEAA45000C60A05 /* BoardView.swift in Sources */,
 				2D98F3742EEAA45000C60A05 /* Dice3DApp.swift in Sources */,
 				2D98F3752EEAA45000C60A05 /* GIFImage.swift in Sources */,
