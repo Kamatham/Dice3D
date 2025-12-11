@@ -181,7 +181,8 @@ struct BoardView: View {
                 .stroke(Color.gray, lineWidth: 1)
                 .background(
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color.clear)
+                        .fill(number%2 == 0 ? .yellow.opacity(0.45) :  .yellow.opacity(0.2))
+                       
                 )
             
             Text("\(number)")
