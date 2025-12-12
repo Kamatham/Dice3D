@@ -9,11 +9,18 @@
 /* Begin PBXBuildFile section */
 		11909D992EEADD0A00882A0F /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11909D982EEADD0A00882A0F /* LaunchScreenView.swift */; };
 		2D2F153B2EE2E2D8005D33EE /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2D2F153A2EE2E2D8005D33EE /* SDWebImageSwiftUI */; };
+		2D69F3EA2EEBEADA001666BA /* Appmanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69F3E92EEBEADA001666BA /* Appmanager.swift */; };
+		2D69F3EC2EEBEC38001666BA /* avatar2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D69F3EB2EEBEC38001666BA /* avatar2.gif */; };
+		2D69F3F42EEBF388001666BA /* avatar7.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D69F3F32EEBF388001666BA /* avatar7.gif */; };
+		2D69F3F52EEBF388001666BA /* avatar5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D69F3F12EEBF388001666BA /* avatar5.gif */; };
+		2D69F3F62EEBF388001666BA /* avatar4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D69F3F02EEBF388001666BA /* avatar4.gif */; };
+		2D69F3F72EEBF388001666BA /* avatar3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D69F3EF2EEBF388001666BA /* avatar3.gif */; };
+		2D69F3F82EEBF388001666BA /* avatar6.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D69F3F22EEBF388001666BA /* avatar6.gif */; };
 		2D98F36E2EEAA45000C60A05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F3642EEAA45000C60A05 /* Assets.xcassets */; };
 		2D98F36F2EEAA45000C60A05 /* celebrate.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F3662EEAA45000C60A05 /* celebrate.gif */; };
 		2D98F3702EEAA45000C60A05 /* celebrate1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F3672EEAA45000C60A05 /* celebrate1.gif */; };
 		2D98F3712EEAA45000C60A05 /* dice3d.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F3682EEAA45000C60A05 /* dice3d.gif */; };
-		2D98F3722EEAA45000C60A05 /* walking.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F36C2EEAA45000C60A05 /* walking.gif */; };
+		2D98F3722EEAA45000C60A05 /* avatar1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F36C2EEAA45000C60A05 /* avatar1.gif */; };
 		2D98F3732EEAA45000C60A05 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F3652EEAA45000C60A05 /* BoardView.swift */; };
 		2D98F3742EEAA45000C60A05 /* Dice3DApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F3692EEAA45000C60A05 /* Dice3DApp.swift */; };
 		2D98F3752EEAA45000C60A05 /* GIFImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F36A2EEAA45000C60A05 /* GIFImage.swift */; };
@@ -27,6 +34,13 @@
 /* Begin PBXFileReference section */
 		11909D982EEADD0A00882A0F /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		2D2F152B2EE2DADC005D33EE /* Dice3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dice3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D69F3E92EEBEADA001666BA /* Appmanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appmanager.swift; sourceTree = "<group>"; };
+		2D69F3EB2EEBEC38001666BA /* avatar2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = avatar2.gif; sourceTree = "<group>"; };
+		2D69F3EF2EEBF388001666BA /* avatar3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = avatar3.gif; sourceTree = "<group>"; };
+		2D69F3F02EEBF388001666BA /* avatar4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = avatar4.gif; sourceTree = "<group>"; };
+		2D69F3F12EEBF388001666BA /* avatar5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = avatar5.gif; sourceTree = "<group>"; };
+		2D69F3F22EEBF388001666BA /* avatar6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = avatar6.gif; sourceTree = "<group>"; };
+		2D69F3F32EEBF388001666BA /* avatar7.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = avatar7.gif; sourceTree = "<group>"; };
 		2D98F3642EEAA45000C60A05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D98F3652EEAA45000C60A05 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		2D98F3662EEAA45000C60A05 /* celebrate.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = celebrate.gif; sourceTree = "<group>"; };
@@ -35,7 +49,7 @@
 		2D98F3692EEAA45000C60A05 /* Dice3DApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice3DApp.swift; sourceTree = "<group>"; };
 		2D98F36A2EEAA45000C60A05 /* GIFImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImage.swift; sourceTree = "<group>"; };
 		2D98F36B2EEAA45000C60A05 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
-		2D98F36C2EEAA45000C60A05 /* walking.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = walking.gif; sourceTree = "<group>"; };
+		2D98F36C2EEAA45000C60A05 /* avatar1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = avatar1.gif; sourceTree = "<group>"; };
 		2D98F37A2EEAA65F00C60A05 /* ladder_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ladder_sound.mp3; sourceTree = "<group>"; };
 		2D98F37B2EEAA65F00C60A05 /* run_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = run_sound.mp3; sourceTree = "<group>"; };
 		2D98F37C2EEAA65F00C60A05 /* snake_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = snake_sound.mp3; sourceTree = "<group>"; };
@@ -80,6 +94,7 @@
 				2D98F3692EEAA45000C60A05 /* Dice3DApp.swift */,
 				2D98F36A2EEAA45000C60A05 /* GIFImage.swift */,
 				2D98F36B2EEAA45000C60A05 /* SoundManager.swift */,
+				2D69F3E92EEBEADA001666BA /* Appmanager.swift */,
 				11909D982EEADD0A00882A0F /* LaunchScreenView.swift */,
 			);
 			path = Dice3D;
@@ -100,7 +115,13 @@
 				2D98F3662EEAA45000C60A05 /* celebrate.gif */,
 				2D98F3672EEAA45000C60A05 /* celebrate1.gif */,
 				2D98F3682EEAA45000C60A05 /* dice3d.gif */,
-				2D98F36C2EEAA45000C60A05 /* walking.gif */,
+				2D69F3EF2EEBF388001666BA /* avatar3.gif */,
+				2D69F3F02EEBF388001666BA /* avatar4.gif */,
+				2D69F3F12EEBF388001666BA /* avatar5.gif */,
+				2D69F3F22EEBF388001666BA /* avatar6.gif */,
+				2D69F3F32EEBF388001666BA /* avatar7.gif */,
+				2D69F3EB2EEBEC38001666BA /* avatar2.gif */,
+				2D98F36C2EEAA45000C60A05 /* avatar1.gif */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -182,13 +203,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D98F36E2EEAA45000C60A05 /* Assets.xcassets in Resources */,
+				2D69F3F42EEBF388001666BA /* avatar7.gif in Resources */,
+				2D69F3F52EEBF388001666BA /* avatar5.gif in Resources */,
+				2D69F3F62EEBF388001666BA /* avatar4.gif in Resources */,
+				2D69F3F72EEBF388001666BA /* avatar3.gif in Resources */,
+				2D69F3F82EEBF388001666BA /* avatar6.gif in Resources */,
 				2D98F37D2EEAA65F00C60A05 /* run_sound.mp3 in Resources */,
+				2D69F3EC2EEBEC38001666BA /* avatar2.gif in Resources */,
 				2D98F37E2EEAA65F00C60A05 /* snake_sound.mp3 in Resources */,
 				2D98F37F2EEAA65F00C60A05 /* ladder_sound.mp3 in Resources */,
 				2D98F36F2EEAA45000C60A05 /* celebrate.gif in Resources */,
 				2D98F3702EEAA45000C60A05 /* celebrate1.gif in Resources */,
 				2D98F3712EEAA45000C60A05 /* dice3d.gif in Resources */,
-				2D98F3722EEAA45000C60A05 /* walking.gif in Resources */,
+				2D98F3722EEAA45000C60A05 /* avatar1.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +253,7 @@
 				2D98F3812EEB03FD00C60A05 /* WelcomeView.swift in Sources */,
 				2D98F3732EEAA45000C60A05 /* BoardView.swift in Sources */,
 				2D98F3742EEAA45000C60A05 /* Dice3DApp.swift in Sources */,
+				2D69F3EA2EEBEADA001666BA /* Appmanager.swift in Sources */,
 				2D98F3752EEAA45000C60A05 /* GIFImage.swift in Sources */,
 				2D98F3762EEAA45000C60A05 /* SoundManager.swift in Sources */,
 			);

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BoardView: View {
+    @Environment(\.dismiss) var dismiss
     private let columnsCount = 5
     private let rowsCount = 10
     
@@ -25,6 +26,8 @@ struct BoardView: View {
     let gameMode: Int
     let player1Name: String
     let player2Name: String
+    let p1ImageName: String
+    let p2ImageName: String
     // 1 = Single Player, 2 = Two Players
     @State private var currentPlayer: Int = 1
     // 1 = P1, 2 = P2
@@ -79,7 +82,16 @@ struct BoardView: View {
     
     
     var body: some View {
-        mainView
+        VStack {
+            HStack {
+                Button("Back") {
+                    dismiss()
+                }.padding(.leading, 20)
+                Spacer()
+            }.padding(.top, 40)
+            
+            mainView
+        }
     }
     
     var mainView: some View {
@@ -115,7 +127,7 @@ struct BoardView: View {
                     snake32_24
                     snake19_10
                     snake16_2
-                }.offset(y: -16)
+                }.offset(y: -6)
                     .zIndex(-1)
                 
                 Group {
@@ -124,7 +136,7 @@ struct BoardView: View {
                     ladder20_36
                     ladder17_31
                     ladder3_15
-                }.offset(y: -16)
+                }.offset(y: -6)
                     .zIndex(-1)
                 
                 
@@ -158,10 +170,10 @@ struct BoardView: View {
             }
             
             HStack {
-                playerView(name: player1Name, isTurn: currentPlayer == 1)
+                playerView(name: player1Name, isTurn: currentPlayer == 1, image: getStandingNameP1)
                 Spacer()
                 if gameMode == 2 {
-                    playerView(name: player2Name, isTurn: currentPlayer == 2)
+                    playerView(name: player2Name, isTurn: currentPlayer == 2, image: getStandingNameP2)
                 }
             }//.border(.red, width: 1.0)
             
@@ -186,11 +198,11 @@ struct BoardView: View {
     }
     // MARK: - Dice View & Movement
     
-    func playerView(name: String, isTurn: Bool) -> some View {
+    func playerView(name: String, isTurn: Bool, image: String) -> some View {
         HStack {
             Text(name)
                 .font(.headline)
-            Image("standing")
+            Image(image)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 36, height: 36)
@@ -278,14 +290,14 @@ struct BoardView: View {
             // P1 token
             if positionP1 == number {
                 if showAnimation && isCurrent && currentPlayer == 1 {
-                    GIFImage(name: "walking")
+                    GIFImage(name: self.getAvatarName)
                         .frame(width: 48, height: 48)
                         .scaleEffect(x: isReversedAnimationP1 ? -1 : 1, y: 1)
                         .zIndex(1)
                 }
                 else {
                     VStack {
-                        Image("standing")
+                        Image(getStandingNameP1)
                             .resizable()
                             .scaledToFit()
                             .frame(width: isCurrent ? 40 : 22, height: isCurrent ? 40 : 22)
@@ -298,13 +310,13 @@ struct BoardView: View {
             // P2 token should show ONLY in two-player mode
             if gameMode == 2 && positionP2 == number  {
                 if showAnimation && isCurrent && currentPlayer == 2 {
-                    GIFImage(name: "walking")
+                    GIFImage(name: self.getAvatarName)
                         .frame(width: 48, height: 48)
                         .scaleEffect(x: isReversedAnimationP2 ? -1 : 1, y: 1)
                         .zIndex(1)
                 } else {
                     VStack {
-                        Image("standing")
+                        Image(getStandingNameP2)
                             .resizable()
                             .scaledToFit()
                             .frame(width: isCurrent ? 40 : 22, height: isCurrent ? 40 : 22)
@@ -335,7 +347,7 @@ struct BoardView: View {
 
 
 #Preview {
-    BoardView(gameMode: 2, player1Name: "qqq", player2Name: "ccc")
+    BoardView(gameMode: 2, player1Name: "qqq", player2Name: "ccc", p1ImageName: "avatar1", p2ImageName: "avatar2")
 }
 
 extension BoardView {
@@ -577,4 +589,18 @@ extension BoardView {
     }
     
     
+    var getAvatarName: String {
+        if currentPlayer == 1 {
+            return self.p1ImageName
+        } else {
+            return self.p2ImageName
+        }
+    }
+    
+    var getStandingNameP1: String {
+        return self.p1ImageName + "_s"
+    }
+    var getStandingNameP2: String {
+        return self.p2ImageName + "_s"
+    }
 }

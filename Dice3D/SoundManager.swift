@@ -29,7 +29,6 @@ class SoundManager {
         }
     }
     
-    /// Stop currently playing sound
     func stopPlay() {
         player?.stop()
         player = nil
