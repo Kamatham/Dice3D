@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ImageIO
 
 struct BoardView: View {
     @Environment(\.dismiss) var dismiss
@@ -16,6 +17,7 @@ struct BoardView: View {
     @State private var diceRolling: Bool = false
     @State private var isMovingToken: Bool = false
     @State private var showAnimation: Bool = false
+    
     
     @State private var positionP1: Int = 0
     @State private var positionP2: Int = 0
@@ -28,9 +30,12 @@ struct BoardView: View {
     let player2Name: String
     let p1ImageName: String
     let p2ImageName: String
+    let isDarkMode: Bool
+    
     // 1 = Single Player, 2 = Two Players
     @State private var currentPlayer: Int = 1
     // 1 = P1, 2 = P2
+    
     
     var isReversedAnimationP1: Bool {
         if positionP1 < 6 ||
@@ -91,7 +96,7 @@ struct BoardView: View {
             }.padding(.top, 40)
             
             mainView
-        }
+        }.background(isDarkMode ? Color.black : Color.white)
     }
     
     var mainView: some View {
@@ -192,7 +197,8 @@ struct BoardView: View {
                     Spacer()
                 }
                 
-            }.background(.green.opacity(0.2))
+            }.background(.brown.opacity(0.5))
+                .cornerRadius(8)
             Spacer()
         }
     }
@@ -201,6 +207,7 @@ struct BoardView: View {
     func playerView(name: String, isTurn: Bool, image: String) -> some View {
         HStack {
             Text(name)
+                .foregroundColor(isDarkMode ? .white : .black)
                 .font(.headline)
             Image(image)
                 .resizable()
@@ -222,18 +229,36 @@ struct BoardView: View {
             } else {
                 
                 if positionP1 == 0 {
-                    Button("START", action: {
+
+                    Button(action: {
                         rollDice()
-                    }).foregroundStyle(.primary)
-                        .padding(.leading)
+                    }) {
+                        Text("START")
+                            .font(.callout)
+                            .fontWeight(.bold)
+                            .foregroundColor(isDarkMode ? .white : .black)
+                            .padding(.vertical, 10)
+                            .background(Color.clear)
+                            .frame(width: 90)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 28)
+                                    .stroke(isDarkMode ? Color.white : Color.black, lineWidth: 0.6)
+                            ).padding(.leading, 30)
+                    }
+                    .padding(.leading)
+                    
                 }
                 else {
                     Image("dice\(diceValueP1)")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 58, height: 58)
-                       // .opacity(diceRolling ? 0 : 1.0)
-                        .cornerRadius(8)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.black, lineWidth: 1)
+                        )
+                        .shadow(radius: 2)
                         .onTapGesture {
                             rollDice()
                         }
@@ -252,17 +277,34 @@ struct BoardView: View {
             } else {
                 
                 if positionP2 == 0 {
-                    Button("START", action: {
+                    Button(action: {
                         rollDice()
-                    }).foregroundStyle(.primary)
-                        .padding(.trailing)
+                    }) {
+                        Text("START")
+                            .font(.callout)
+                            .fontWeight(.bold)
+                            .foregroundColor(isDarkMode ? .white : .black)
+                            .padding(.vertical, 10)
+                            .background(Color.clear)
+                            .frame(width: 90)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 28)
+                                    .stroke(isDarkMode ? Color.white : Color.black, lineWidth: 0.6)
+                            ).padding(.trailing, 30)
+                    }
+                    .padding(.trailing)
                 }
                 else {
                     Image("dice\(diceValueP2)")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 58, height: 58)
-                        .cornerRadius(8)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.black, lineWidth: 1)
+                        )
+                        .shadow(radius: 2)
                         .onTapGesture {
                             rollDice()
                         }
@@ -278,31 +320,33 @@ struct BoardView: View {
                 .stroke(Color.gray, lineWidth: 1)
                 .background(
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(number%2 == 0 ? .green.opacity(0.2) :  .yellow.opacity(0.2))
+                        .fill(number%2 == 0 ? .cyan.opacity(0.2) :  .yellow.opacity(0.2))
                     
                 )
             
             Text("\(number)")
                 .font(.caption)
                 .fontWeight(isCurrent ? .bold : .regular)
-                .foregroundColor(isCurrent ? .yellow : .primary)
-            
+                .foregroundColor(isDarkMode ? .white : .black)
+  
             // P1 token
             if positionP1 == number {
                 if showAnimation && isCurrent && currentPlayer == 1 {
                     GIFImage(name: self.getAvatarName)
-                        .frame(width: 48, height: 48)
+                        .frame(width: 52, height: 52)
                         .scaleEffect(x: isReversedAnimationP1 ? -1 : 1, y: 1)
                         .zIndex(1)
                 }
                 else {
                     VStack {
-                        Image(getStandingNameP1)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: isCurrent ? 40 : 22, height: isCurrent ? 40 : 22)
-                            .scaleEffect(x: isReversedAnimationP1 ? -1 : 1, y: 1)
-                            .zIndex(1)
+                        if let first = UIImage.firstFrame(fromGIF: self.getStandingNameP1) {
+                            Image(uiImage: first)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: getSize(isCurrent), height: getSize(isCurrent))
+                                .scaleEffect(x: isReversedAnimationP1 ? -1 : 1, y: 1)
+                                .zIndex(1)
+                        }
                     }
                 }
             }
@@ -311,21 +355,27 @@ struct BoardView: View {
             if gameMode == 2 && positionP2 == number  {
                 if showAnimation && isCurrent && currentPlayer == 2 {
                     GIFImage(name: self.getAvatarName)
-                        .frame(width: 48, height: 48)
+                        .frame(width: 52, height: 52)
                         .scaleEffect(x: isReversedAnimationP2 ? -1 : 1, y: 1)
                         .zIndex(1)
                 } else {
                     VStack {
-                        Image(getStandingNameP2)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: isCurrent ? 40 : 22, height: isCurrent ? 40 : 22)
-                            .scaleEffect(x: isReversedAnimationP2 ? -1 : 1, y: 1)
-                            .zIndex(1)
+                        if let first = UIImage.firstFrame(fromGIF: self.getStandingNameP2) {
+                            Image(uiImage: first)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: getSize(isCurrent), height: getSize(isCurrent))
+                                .scaleEffect(x: isReversedAnimationP2 ? -1 : 1, y: 1)
+                                .zIndex(1)
+                        }
                     }
                 }
             }
         }.frame(height: 52)
+    }
+    
+    func getSize(_ isCurrent: Bool) -> CGFloat {
+        return isCurrent ?  52.0 :  36.0
     }
     
     /// snakes & ladders: head → tail, bottom → top
@@ -347,7 +397,7 @@ struct BoardView: View {
 
 
 #Preview {
-    BoardView(gameMode: 2, player1Name: "qqq", player2Name: "ccc", p1ImageName: "avatar1", p2ImageName: "avatar2")
+    BoardView(gameMode: 2, player1Name: "qqq", player2Name: "ccc", p1ImageName: "avatar2", p2ImageName: "avatar6", isDarkMode: false)
 }
 
 extension BoardView {
@@ -384,7 +434,7 @@ extension BoardView {
         let steps = target - pos
         
         isMovingToken = true
-        SoundManager.shared.playLadderSound(fileName: "run_sound")
+      //  SoundManager.shared.playLadderSound(fileName: "run_sound")
         
         moveStep(remainingSteps: steps)
     }
@@ -428,7 +478,7 @@ extension BoardView {
         if path.count > 1 {
             // Ladder or snake sound
             if path.last! > pos {
-                SoundManager.shared.playLadderSound(fileName: "ladder_sound")
+                SoundManager.shared.playLadderSound(fileName: "run_sound")
             } else {
                 SoundManager.shared.playLadderSound(fileName: "snake_sound")
             }
@@ -598,9 +648,21 @@ extension BoardView {
     }
     
     var getStandingNameP1: String {
-        return self.p1ImageName + "_s"
+        return self.p1ImageName
     }
     var getStandingNameP2: String {
-        return self.p2ImageName + "_s"
+        return self.p2ImageName
+    }
+}
+
+extension UIImage {
+    static func firstFrame(fromGIF named: String) -> UIImage? {
+        guard let url = Bundle.main.url(forResource: named, withExtension: "gif"),
+              let data = try? Data(contentsOf: url),
+              let source = CGImageSourceCreateWithData(data as CFData, nil),
+              let cgImage = CGImageSourceCreateImageAtIndex(source, 0, nil)
+        else { return nil }
+        
+        return UIImage(cgImage: cgImage)
     }
 }

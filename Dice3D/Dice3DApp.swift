@@ -31,7 +31,7 @@ struct RootView: View {
         }
         .onAppear {
             // Hide launch screen after 5 seconds
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 withAnimation(.easeInOut(duration: 0.5)) {
                     showLaunchScreen = false
                 }
