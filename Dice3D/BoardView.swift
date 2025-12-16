@@ -24,8 +24,9 @@ struct BoardView: View {
     @State private var diceValueP1: Int = 1
     @State private var diceValueP2: Int = 1
     
-    //@State private var gameMode: Int = 2
-    let gameMode: Int
+    let gameMode: Int // // 1 = Single Player, 2 = Two Players
+    let autoPlayer: Bool
+    @State var autoPlayerValues:[Int] = [3,2,2,4,1,2]
     let player1Name: String
     let player2Name: String
     let p1ImageName: String
@@ -34,8 +35,7 @@ struct BoardView: View {
     
     // 1 = Single Player, 2 = Two Players
     @State private var currentPlayer: Int = 1
-    // 1 = P1, 2 = P2
-    
+
     
     var isReversedAnimationP1: Bool {
         if positionP1 < 6 ||
@@ -62,7 +62,6 @@ struct BoardView: View {
             return true // reverse walk
         }
     }
-    
     /// Numbers laid out like a snakes & ladders board
     var boardNumbers: [Int] {
         var result: [Int] = []
@@ -106,11 +105,13 @@ struct BoardView: View {
                     GIFImage(name: "celebrate1")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                     if positionP1 == 50 {
-                        Text("\(player1Name) won the board!!")
+                        Text("\(player1Name) won the game!!")
                             .font(.largeTitle)
+                            .foregroundColor(isDarkMode ? .white : .black)
                     } else {
-                        Text("\(player2Name) won the board!!")
+                        Text("\(player2Name) won the game!!")
                             .font(.largeTitle)
+                            .foregroundColor(isDarkMode ? .white : .black)
                     }
                     
                     Button("Start New Game", action: {
@@ -175,16 +176,20 @@ struct BoardView: View {
             }
             
             HStack {
-                playerView(name: player1Name, isTurn: currentPlayer == 1, image: getStandingNameP1)
+                playerView(name: player1Name,
+                           isTurn: currentPlayer == 1,
+                           image: getStandingNameP1)
                 Spacer()
-                if gameMode == 2 {
-                    playerView(name: player2Name, isTurn: currentPlayer == 2, image: getStandingNameP2)
+                if gameMode == 2 || autoPlayer {
+                    playerView(name:player2Name,
+                               isTurn: currentPlayer == 2,
+                               image: getStandingNameP2)
                 }
             }//.border(.red, width: 1.0)
             
             
             HStack {
-                if gameMode == 2 { // chaitra
+                if gameMode == 2 || autoPlayer { // chaitra
                     diceView1
                         .allowsHitTesting(currentPlayer == 1)
                         .opacity(currentPlayer == 1 ? 1 : 0.2)
@@ -209,10 +214,18 @@ struct BoardView: View {
             Text(name)
                 .foregroundColor(isDarkMode ? .white : .black)
                 .font(.headline)
-            Image(image)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 36, height: 36)
+                .opacity(isTurn ? 1.0 : 0.2)
+            
+            if let first = UIImage.firstFrame(fromGIF: image) {
+                Image(uiImage: first)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 36, height: 36)
+                    .scaleEffect(x: isReversedAnimationP1 ? -1 : 1, y: 1)
+                    .opacity(isTurn ? 1.0 : 0.2)
+                    .zIndex(1)
+            }
+        
         }.padding()
             .background(
                 RoundedRectangle(cornerRadius: 8)
@@ -352,7 +365,7 @@ struct BoardView: View {
             }
             
             // P2 token should show ONLY in two-player mode
-            if gameMode == 2 && positionP2 == number  {
+            if (gameMode == 2 || autoPlayer) && positionP2 == number  {
                 if showAnimation && isCurrent && currentPlayer == 2 {
                     GIFImage(name: self.getAvatarName)
                         .frame(width: 52, height: 52)
@@ -397,7 +410,7 @@ struct BoardView: View {
 
 
 #Preview {
-    BoardView(gameMode: 2, player1Name: "qqq", player2Name: "ccc", p1ImageName: "avatar2", p2ImageName: "avatar6", isDarkMode: false)
+    BoardView(gameMode: 1, autoPlayer: true, player1Name: "qqq", player2Name: "ccc", p1ImageName: "avatar2", p2ImageName: "avatar6", isDarkMode: true)
 }
 
 extension BoardView {
@@ -407,7 +420,13 @@ extension BoardView {
         // don’t allow rolling while already rolling or moving
         guard !diceRolling, !isMovingToken else { return }
         
-        diceValue = Int.random(in: 1...6)
+        if currentPlayer == 2 && autoPlayer { // [3,2,2,5,2]
+            let first = autoPlayerValues.first ?? 1
+            diceValue = first
+            autoPlayerValues.remove(at: 0)
+        } else {
+            diceValue = Int.random(in: 1...6)
+        }
         if currentPlayer == 1 {
             diceValueP1 = diceValue
         } else {
@@ -521,7 +540,7 @@ extension BoardView {
         
         
         // SINGLE PLAYER → Do NOT switch player
-        if gameMode == 1 {
+        if gameMode == 1 && autoPlayer == false {
             currentPlayer = 1
             return
         }

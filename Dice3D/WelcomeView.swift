@@ -18,6 +18,7 @@ struct WelcomeView: View {
     
     @State private var startGame: Bool = false
     @State private var isDarkMode: Bool = false
+    @State private var isAutoPlayer: Bool = false
     
     var avatarsList: [String] = ["avatar1", "avatar2", /*"avatar3", "avatar4",*/ "avatar5", "avatar6", "avatar7"]
     
@@ -142,6 +143,7 @@ struct WelcomeView: View {
             NavigationLink(
                 destination: BoardView(
                     gameMode: gameMode,
+                    autoPlayer: isAutoPlayer,
                     player1Name: player1Name.isEmpty ? "Player 1" : player1Name,
                     player2Name: player2Name.isEmpty ? "Player 2" : player2Name,
                     p1ImageName: p1ImageName,
@@ -154,6 +156,9 @@ struct WelcomeView: View {
             // Start Game Button
             Button(action: {
                 if !isDisabled {
+                    if player2Name.lowercased() == "raju" {
+                        self.isAutoPlayer = true
+                    }
                     startGame = true
                 }
             }) {
