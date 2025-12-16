@@ -156,7 +156,8 @@ struct WelcomeView: View {
             // Start Game Button
             Button(action: {
                 if !isDisabled {
-                    if player2Name.lowercased() == "raju" {
+                    if player2Name.lowercased() == "raju" ||
+                        player2Name.lowercased() == "trilok" { // Hack for FUN
                         self.isAutoPlayer = true
                     }
                     startGame = true
