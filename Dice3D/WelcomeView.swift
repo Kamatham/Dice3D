@@ -146,12 +146,12 @@ struct WelcomeView: View {
             NavigationLink(
                 destination: BoardView(
                     gameMode: gameMode,
-                    autoPlayer: isAutoPlayer,
                     player1Name: player1Name.isEmpty ? "Player 1" : player1Name,
                     player2Name: player2Name.isEmpty ? "Player 2" : player2Name,
                     p1ImageName: p1ImageName,
                     p2ImageName: p2ImageName,
-                    isDarkMode: isDarkMode
+                    isDarkMode: isDarkMode,
+                    autoPlayer: isAutoPlayer,
                 ).navigationBarBackButtonHidden(),
                 isActive: $startGame
             ) { EmptyView() }

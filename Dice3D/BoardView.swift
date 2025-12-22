@@ -25,8 +25,6 @@ struct BoardView: View {
     @State private var diceValueP2: Int = 1
     
     let gameMode: Int // // 1 = Single Player, 2 = Two Players
-    let autoPlayer: Bool
-    @State var autoPlayerValues:[Int] = [3,2,2,4,1,2]
     let player1Name: String
     let player2Name: String
     let p1ImageName: String
@@ -35,6 +33,17 @@ struct BoardView: View {
     
     // 1 = Single Player, 2 = Two Players
     @State private var currentPlayer: Int = 1
+    
+    let autoPlayer: Bool
+    
+    static let  winRoute1 : [Int] = [3,2,2,4,1,2]
+    static let  winRoute2 : [Int] = [5,4,6,4,3,4,5,4,5,1,3,1]
+    static let  winRoute3 : [Int] = [1,2,1,6,4,5,2,3,2,6,2]
+    static let  winRoute4 : [Int] = [6,3,5,3,5,4,2]
+    static let  winRoute5 : [Int] = [3,2,5,4,4,3,2]
+    
+    var winingRouteList:[[Int]] = [winRoute1, winRoute2, winRoute3, winRoute4, winRoute5]
+    @State var autoPlayerValues:[Int] = []
 
     
     var isReversedAnimationP1: Bool {
@@ -97,7 +106,10 @@ struct BoardView: View {
             mainView
         }.background(isDarkMode ? Color.black : Color.white)
             .onAppear {
-                print("autoPlayer ------>>> \(autoPlayer)")
+                let randomPick = Int.random(in: 0..<winingRouteList.count)
+                print("randomPick ------>>> \(randomPick)")
+                autoPlayerValues = winingRouteList[randomPick]
+               
             }
     }
     
@@ -410,15 +422,7 @@ struct BoardView: View {
     ]
 }
 
-
-
-#Preview {
-    BoardView(gameMode: 1, autoPlayer: true, player1Name: "qqq", player2Name: "ccc", p1ImageName: "avatar2", p2ImageName: "avatar6", isDarkMode: true)
-}
-
 extension BoardView {
-    
-    
     private func rollDice() {
         // don’t allow rolling while already rolling or moving
         guard !diceRolling, !isMovingToken else { return }
@@ -687,4 +691,8 @@ extension UIImage {
         
         return UIImage(cgImage: cgImage)
     }
+}
+
+#Preview {
+    BoardView(gameMode: 1, player1Name: "qqq", player2Name: "ccc", p1ImageName: "avatar2", p2ImageName: "avatar6", isDarkMode: true, autoPlayer: true, winingRouteList: [[1,2,3,4],[1,4]])
 }
