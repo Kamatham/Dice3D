@@ -96,6 +96,9 @@ struct BoardView: View {
             
             mainView
         }.background(isDarkMode ? Color.black : Color.white)
+            .onAppear {
+                print("autoPlayer ------>>> \(autoPlayer)")
+            }
     }
     
     var mainView: some View {

@@ -26,6 +26,9 @@ struct WelcomeView: View {
         NavigationView {
             mainView
                 .background(isDarkMode ? .black : .white)
+                .onAppear {
+                    isAutoPlayer = false
+                }
         }
     }
     
