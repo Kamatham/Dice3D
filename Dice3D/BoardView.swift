@@ -107,9 +107,8 @@ struct BoardView: View {
         }.background(isDarkMode ? Color.black : Color.white)
             .onAppear {
                 let randomPick = Int.random(in: 0..<winingRouteList.count)
-                print("randomPick ------>>> \(randomPick)")
+               // print("randomPick ------>>> \(randomPick)")
                 autoPlayerValues = winingRouteList[randomPick]
-               
             }
     }
     
@@ -461,7 +460,6 @@ extension BoardView {
         
         isMovingToken = true
       //  SoundManager.shared.playLadderSound(fileName: "run_sound")
-        
         moveStep(remainingSteps: steps)
     }
     

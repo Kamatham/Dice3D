@@ -87,14 +87,18 @@ struct WelcomeView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
                         ForEach(avatarsList, id: \.self) { avt in
-                            GIFImage(name: avt)
-                                .frame(width: avt.plusSize, height: avt.plusSize)
-                                .padding(6)
-                                .background(p1ImageName == avt ? Color.green.opacity(0.7) : Color.gray.opacity(0.5))
-                                .cornerRadius(10)
-                                .onTapGesture {
-                                    p1ImageName = avt
-                                }
+                            if let first = UIImage.firstFrame(fromGIF: avt) {
+                                Image(uiImage: first)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: avt.plusSize, height: avt.plusSize)
+                                    .padding(6)
+                                    .background(p1ImageName == avt ? Color.green.opacity(0.7) : Color.gray.opacity(0.5))
+                                    .cornerRadius(10)
+                                    .onTapGesture {
+                                        p1ImageName = avt
+                                    }
+                            }
                         }
                     }
                 }
@@ -124,14 +128,18 @@ struct WelcomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 15) {
                             ForEach(avatarsList, id: \.self) { avt in
-                                GIFImage(name: avt)
-                                    .frame(width: 40, height: 40)
-                                    .padding(6)
-                                    .background(p2ImageName == avt ? Color.green.opacity(0.7) : Color.gray.opacity(0.3))
-                                    .cornerRadius(10)
-                                    .onTapGesture {
-                                        p2ImageName = avt
-                                    }
+                                if let first = UIImage.firstFrame(fromGIF: avt) {
+                                    Image(uiImage: first)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: avt.plusSize, height: avt.plusSize)
+                                        .padding(6)
+                                        .background(p2ImageName == avt ? Color.green.opacity(0.7) : Color.gray.opacity(0.5))
+                                        .cornerRadius(10)
+                                        .onTapGesture {
+                                            p2ImageName = avt
+                                        }
+                                }
                             }
                         }
                     }
